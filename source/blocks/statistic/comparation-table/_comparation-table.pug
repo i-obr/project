@@ -1,0 +1,40 @@
+include ../../components/charts/bars/skill/_skill-bar
+
+table.comparation-table
+    tbody
+        tr.comparation-table__row
+            td.comparation-table__cell.comparation-table__cell--name
+                span.comparation-table__name 1. Цветовод: Перегрузка
+                span.comparation-table__index 1495
+            td.comparation-table__cell.comparation-table__cell--bar
+                +skill-bar('attention')
+        tr.comparation-table__row
+            td.comparation-table__cell.comparation-table__cell--name 
+                span.comparation-table__name 2. Геометрия
+                span.comparation-table__index 1330
+            td.comparation-table__cell.comparation-table__cell--bar
+                +skill-bar('memory')
+        tr.comparation-table__row
+            td.comparation-table__cell.comparation-table__cell--name 
+                span.comparation-table__name 3. Найди число
+                span.comparation-table__index 960
+            td.comparation-table__cell.comparation-table__cell--bar
+                +skill-bar('flexibility')
+        tr.comparation-table__row
+            td.comparation-table__cell.comparation-table__cell--name 
+                span.comparation-table__name 4. Cигнальные лампочки
+                span.comparation-table__lock
+                    include ../../../img/icons/pages/statistic/icon-lock.svg
+            td.comparation-table__cell.comparation-table__cell--bar-lock
+                +skill-bar
+            td.comparation-table__cell.comparation-table__cell--link
+                a.link.link--gray(href="#") Открыть результаты
+        tr.comparation-table__row
+            td.comparation-table__cell.comparation-table__cell--name
+                span.comparation-table__name 5. Парные ассоциации
+                span.comparation-table__lock
+                    include ../../../img/icons/pages/statistic/icon-lock.svg
+            td.comparation-table__cell.comparation-table__cell--bar-lock
+                +skill-bar
+            td.comparation-table__cell.comparation-table__cell--link 
+                a.link.link--gray(href="#") Открыть результаты

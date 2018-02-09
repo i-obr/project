@@ -1,0 +1,87 @@
+extends ../layout-default
+
+block head
+    - var pageTitle = "Сравнение с другими :: Статистика";
+    - var pageStyle = "/build/statistic.css"
+
+block content
+    body.statistic.statistic-comparation
+        block header
+            include ../../components/global/header/header
+            include ../../components/global/sub-nav/sub-nav
+        
+        block main
+            main.main-content.main-content--purple
+                div.main-content__inner
+                    article.statistic-comparation__card.statistic__card.card
+                        h1.statistic-comparation__title.statistic__title Сравнительная аналитика
+                        p.statistic-comparation__text Ваши показатели ИП сравниваются с показателями других пользователей Wikium по указанным фильтрам. Вы видите процент людей, которых вы превосходите.
+                        div.statistic-comparation__select-items
+                            include _select-group
+                        div.statistic-comparation__menu-wrap
+                            nav.statistic-comparation__menu.sub-nav__menu
+                                ul.statistic-comparation__menu-list.sub-nav__menu-list
+                                    li.statistic-comparation__menu-item.sub-nav__menu-item(data-state="active")
+                                        a.statistic-comparation__menu-link.sub-nav__menu-link(href="#") Внимание
+                                    li.statistic-comparation__menu-item.sub-nav__menu-item
+                                        a.statistic-comparation__menu-link.sub-nav__menu-link(href="#") Память
+                                    li.statistic-comparation__menu-item.sub-nav__menu-item(data-state="disabled")
+                                        a.statistic-comparation__menu-link.sub-nav__menu-link(href="#")
+                                            span Мышление
+                            p.statistic-comparation__text.statistic-comparation__text--promo Узнайте где вы на графике <br>с 
+                                a.link.link--underline Премиум доступом
+
+                        div.statistic-comparation__graph
+                            include ../../components/charts/graphs/data-graph
+                        p.statistic-comparation__text.statistic-comparation__text--small На графике показано точное распределение результатов по индексу производительности. Чтобы увидеть свой результат, откройте 
+                            a.link.link--underline(href="#") полный доступ
+                        
+                        div.statistic-comparation__heading.statistic__card-heading
+                            h2.statistic-comparation__title.statistic__title 5 тренажеров с вашими лучшими результатами
+                            div.statistic-comparation__button-group.statistic-comparation__button-group--view
+                                div.button-group
+                                    button.button-group__item 
+                                        include ../../../img/icons/pages/statistic/icon-list.svg
+                                    button.button-group__item(data-state="active")
+                                        include ../../../img/icons/pages/statistic/icon-graph.svg
+                        div.statistic-comparation__difference-graph-wrap
+                            div.statistic-comparation__difference-graph
+                                div.statistic-comparation__graph-popover
+                                    p.statistic-comparation__graph-popover-title Вы лучше 
+                                        b 29%
+                                div.data-graph
+                                    div.data-graph__scale
+                                        div.data-graph__graph
+                                            include ../../../img/icons/pages/statistic/comparation-graph-diff.svg
+                                            div.data-graph__hint.data-graph__hint--x Индекс производительности
+                                            div.data-graph__hint.data-graph__hint--y Количество людей
+                            div.statistic-comparation__button-group.statistic-comparation__button-group-wrap
+                                div.statistic-comparation__button-group--game
+                                    div.button-group
+                                        button.button-group__item(data-lock="true") 1
+                                        button.button-group__item(data-lock="true") 2
+                                        button.button-group__item(data-lock="true") 3
+                                        button.button-group__item(data-state="active") 4
+                                        button.button-group__item 5
+                                span.statistic-comparation__game Парные ассоциации
+
+                        div.statistic-comparation__table
+                            include _comparation-table
+                            
+                    section.statistic-comparation__acide
+                        h3.statistic-comparation__acide-title Лента достижений
+                        include _goals
+                        
+                            
+                            
+                            
+        
+            block footer
+                include ../../components/global/footer/footer
+
+        block scripts
+            script(src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous")
+            script
+                include ../../../pug/components/global/header/header.js
+            script
+                include ../../../pug/components/global/footer/footer.js

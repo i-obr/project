@@ -1,0 +1,16 @@
+.lock-screen {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #fff url(/img/icons/pages/statistic/icon-lock--purple.svg) no-repeat;
+    background-position: top center;
+}
+
+.statistic .lock-screen {
+    height: 180px;
+
+    &__text {
+        margin: 0 auto;
+        padding-top: 80px;
+    }
+}

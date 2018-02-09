@@ -1,0 +1,146 @@
+.neurobonus-card {
+    max-width: 510px;
+    margin: 0 auto;
+    box-shadow: 0 2px 20px 0 rgba($color_black, 0.1);
+
+    &__heading {
+        padding: 30px 0;
+        border-bottom: 1px solid $color_grey9;
+        text-align: center;
+    }
+
+    &__heading-title {
+        margin: 0 0 5px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    &__heading-text {
+        margin: 0;
+        font-size: 14px;
+        color: $color_grey12;
+    }
+
+    &__content {
+        padding: 28px 24px;
+    }
+
+    &__content-inner {
+        @include clearfix;
+        width: 245px;
+        margin: 0 auto;
+
+        &--promo {
+            text-align: center;
+
+            & .neurobonus-card__content-right {
+                width: 100%;
+            }
+
+            & .neurobonus-card__text span {
+                color: $color_grey12;
+            }
+
+            .btn {
+                width: auto;
+            }
+        }
+    }
+
+    &__content-left {
+        float: left;
+        width: 63px;
+        margin-right: 20px;
+    }
+
+    &__content-right {
+        float: left;
+        width: 150px;
+    }
+
+    &__graduation,
+    &__scale {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    &__graduation {
+        margin-right: 8px;
+    }
+
+    &__graduation-item {
+        width: 30px;
+        margin-bottom: 24px;
+        padding: 2px 0;
+        font-size: 12px;
+        color: $color_grey12;
+        border-bottom: 1px solid $color_grey9;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__scale {
+        position: relative;
+        width: 20px;
+        height: 138px;
+        border-radius: 20px;
+        background-color: $color_purple-bg;
+        overflow: hidden;
+    }
+
+    &__bar {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: $color_yellow;
+    }
+
+    &__text {
+        margin-top: 0;
+        margin-bottom: 20px;
+
+        b {
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 4px;
+        }
+    }
+
+    &__btn {
+        padding: 10px 23px;
+    }
+
+    .caption {
+        margin-bottom: 20px;
+    }
+
+
+    @include media($mobile) {
+
+        &__content {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+    }
+
+
+    @include media($desktop_new) {
+        float: right;
+        width: 330px;
+        margin: 0 auto;
+        transform: translateY(-45px);
+    }
+}
+
+html[lang="es"],
+html[lang="de"] {
+
+    .neurobonus-card__text {
+        margin-bottom: 11px;
+    }
+}
