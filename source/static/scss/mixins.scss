@@ -1,0 +1,171 @@
+@mixin container {
+    @include outer-container(270px);
+    min-width: 280px;
+    box-sizing: initial;
+    @include media($tablet) {
+         @include outer-container(700px);
+        padding: 0 45px;
+    }
+    @include media($desktop) {
+        @include outer-container(940px);
+        padding: 0 30px;
+    }
+}
+
+@mixin container-responsive {
+    width: 90%;
+    min-width: 270px;
+    margin: 0 auto;
+    @include media($tablet) {
+        width: 94%;
+        max-width: 1105px;
+    }
+    @include media($desktop) {
+        width: 1105px;
+    }
+}
+
+@mixin ul-reset {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+@mixin btn-reset {
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    text-align: left;
+}
+
+@mixin rhombus($rhombus-color) {
+    &::before {
+        content: "";
+        position: absolute;
+        top: -22px;
+        left: 50%;
+        z-index: 15;
+        @include size(20px);
+        background: $rhombus-color;
+        transform: rotate(-45deg) translateX(-15px);
+    }
+    @include media($tablet) {
+        &::before {
+            top: -30px;
+            @include size(40px);
+        }
+    }
+    @include media($desktop) {
+        &::before {
+            top: -43px;
+            @include size(65px);
+        }
+    }
+}
+
+@mixin triangle($size, $color, $direction,
+$top, $left, $bottom, $right) {
+    content: "";
+    position: absolute;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+    height: 0;
+    width: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: $size;
+
+    @if $direction == up {
+      border-bottom-color: $color;
+      border-bottom-width: $size;
+
+    } @else if $direction == right {
+      border-left-color: $color;
+      border-left-width: $size;
+
+    } @else if $direction == down {
+      border-top-color: $color;
+      border-top-width: $size;
+
+    } @else if $direction == left {
+      border-right-color:  $color;
+      border-right-width: $size;
+    }
+}
+
+@mixin centering-unknown-container {
+    text-align: center;
+    white-space: nowrap;
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em;
+    }
+}
+
+@mixin centering-unknown-content {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+}
+
+@mixin btn-pressure-reset($color) {
+    padding-top: 0.9em;
+    padding-bottom: 0.9em;
+    box-shadow: none;
+
+    &:active {
+        transform: none;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+        color: shade($color, 30);
+    }
+}
+
+@mixin grayscale {
+    filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale"); /* Firefox 10+, Firefox on Android */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+}
+
+@mixin disabled-grayscale {
+    filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
+    -webkit-filter: grayscale(0%);
+}
+
+@mixin nameplate($url) {
+    content: "";
+    position: absolute;
+    width: 69px;
+    height: 67px;
+    background-image: url($url);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@mixin scrollbar {
+  ::-webkit-scrollbar {
+      width: 4px;
+      height: 160px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $color_grey5;
+      border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: transparent;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $color_grey5;
+    scrollbar-track-color: transparent;
+  }
+}
