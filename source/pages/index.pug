@@ -1,0 +1,18 @@
+doctype html
+html(class="no-js", lang="ru")
+
+  include ../blocks/head/head
+  include ../blocks/block/blockName
+  include ../blocks/logo/logo
+
+  head
+    +head(head.defaults)
+
+  body.page
+    section.page__wrapper
+      +blockName(blockName.small)
+      +blockName(blockName.middle)
+      +blockName(blockName.big)
+      .conetnt
+        +logo(logo.defaults)
+        +logo(logo.another)
