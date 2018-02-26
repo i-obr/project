@@ -25,7 +25,7 @@ function styles() {
         ]))
         .pipe(minifyCss())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('dist/css'));
+        .pipe(gulp.dest('build/css'));
 }
 
 export default styles;

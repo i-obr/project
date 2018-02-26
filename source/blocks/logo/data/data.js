@@ -1,10 +1,10 @@
 logo: {
   defaults: {
-    href: 'pamparam.ru',
-    src: '#'
+    href: 'blah',
+    src: 'bllll'
   },
   another: {
-    href: 'pupupup.ru',
-    src: 'prumpurum.ru'
+    href: 'bla',
+    src: 'bla'
   }
 }

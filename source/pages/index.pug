@@ -1,18 +1,25 @@
 doctype html
 html(class="no-js", lang="ru")
 
-  include ../blocks/head/head
-  include ../blocks/block/blockName
-  include ../blocks/logo/logo
+    include ../blocks/_service/Icon
+    include ../blocks/_service/Symbols
+    include ../blocks/_service/head/head
 
-  head
-    +head(head.defaults)
+    include ../blocks/block/blockName
+    include ../blocks/logo/logo
 
-  body.page
-    section.page__wrapper
-      +blockName(blockName.small)
-      +blockName(blockName.middle)
-      +blockName(blockName.big)
-      .conetnt
-        +logo(logo.defaults)
-        +logo(logo.another)
+    head
+        +head(head.defaults)
+
+    body.page
+        +Symbols
+
+        section.page__wrapper
+            +blockName(blockName.small)
+            +blockName(blockName.middle)
+            +blockName(blockName.big)
+            +Icon('pause')
+
+        .content
+            +logo(logo.defaults)
+            +logo(logo.another)
