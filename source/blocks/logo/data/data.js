@@ -1,7 +1,7 @@
 logo: {
   defaults: {
     href: 'blah',
-    src: 'bllll'
+    src: '/img/assets/opera.png'
   },
   another: {
     href: 'bla',
