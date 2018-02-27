@@ -17,5 +17,4 @@ extends:
 
 rules:
   no-console: 0
-  indent: [4, 'space']
   import/no-extraneous-dependencies: [error, { devDependencies: true }]
