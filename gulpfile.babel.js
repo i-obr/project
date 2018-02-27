@@ -5,7 +5,7 @@ import templates from './gulp/tasks/templates';
 import { imagesStatic, imagesBlocks } from './gulp/tasks/images';
 import concatData from './gulp/helpers/concat-data';
 import symbols from './gulp/tasks/symbols';
-import { watchTemplates, watchData } from './gulp/tasks/watch';
+import watch from './gulp/tasks/watch';
 import server from './gulp/tasks/server';
 
 const build = gulp.series(
@@ -16,8 +16,7 @@ const build = gulp.series(
 const dev = gulp.series(
   build,
   gulp.parallel(
-    watchData,
-    watchTemplates,
+    watch,
     server,
   ),
 );

@@ -1,27 +1,43 @@
 import gulp from 'gulp';
-// import styles from './styles';
+import styles from './styles';
 import templates from './templates';
 import concatData from '../helpers/concat-data';
-// import images from './images';
-// import symbols from './symbols';
+import { imagesStatic, imagesBlocks } from './images';
+import symbols from './symbols';
 
-const fileToCmopile = [
+const watchingTemplatesEndData = [
   'source/pages/**/*.pug',
   'source/blocks/**/*.pug',
+  'source/blocks/**/data/data.js',
   '!source/pages/**/_*.pug',
-  '!source/blocks/**/_*.pug'];
+  '!source/blocks/**/_*.pug',
+];
 
-export function watchTemplates() {
+const watchingStyles = [
+  'source/static/scss/**/*.scss',
+  'source/blocks/**/*.scss',
+];
+
+const watchingImagesBlocks = [
+  'source/blocks/**/assets/img/*.{jpg,jpeg,png,gif,svg}',
+];
+
+const watchingImagesStatic = [
+  'source/static/img/**/*.{jpg,jpeg,png,gif,svg}',
+  '!source/static/img/svg/*.svg',
+];
+
+const watchingSymbols = [
+  'source/static/img/svg/*.svg',
+];
+
+function watch() {
   global.watch = true;
-  gulp.watch(fileToCmopile, gulp.series(concatData, templates));
-
-  // gulp.watch('src/css/**/*.css', styles);
-  // gulp.watch('src/assets/img/*.{png,jpg,gif,svg}', images);
-  // gulp.watch('src/assets/img/icons/*.svg', symbols);
+  gulp.watch(watchingTemplatesEndData, gulp.series(concatData, templates, symbols));
+  gulp.watch(watchingStyles, styles);
+  gulp.watch(watchingImagesBlocks, imagesBlocks);
+  gulp.watch(watchingImagesStatic, imagesStatic);
+  gulp.watch(watchingSymbols, symbols);
 }
 
-export function watchData() {
-  gulp.watch('source/blocks/**/data/data.js', gulp.series(concatData, templates));
-}
-
-// export default watch;
+export default watch;
