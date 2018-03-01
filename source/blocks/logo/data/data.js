@@ -1,7 +1,7 @@
 logo: {
   defaults: {
     href: 'blah',
-    src: '/img/assets/operaa.png'
+    src: 'ig/assets/operaa.png'
   },
   another: {
     href: 'bla',

@@ -9,7 +9,7 @@ const fileStaticToProcessing = [
 ];
 
 const fileBlocksToProcessing = [
-  'source/blocks/**/assets/img/*.{jpg,jpeg,png,gif,svg}',
+  'source/blocks/**/assets/*.{jpg,jpeg,png,gif,svg}',
 ];
 
 export function imagesStatic() {

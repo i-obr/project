@@ -14,8 +14,8 @@ const watchingTemplatesEndData = [
 ];
 
 const watchingStyles = [
-  'source/static/scss/**/*.scss',
-  'source/blocks/**/*.scss',
+  'source/static/css/**/*.css',
+  'source/blocks/**/*.css',
 ];
 
 const watchingImagesBlocks = [
