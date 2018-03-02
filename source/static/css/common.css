@@ -1,8 +1,1 @@
-.page {
-    background: blue;
-    background-image: url('/general/general-bg.jpg');
 
-    &__wrapper {
-        background-image: url('/content/brain.jpg');
-    }
-}

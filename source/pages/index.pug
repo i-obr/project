@@ -5,8 +5,6 @@ html(class="no-js", lang="ru")
     include ../blocks/_service/Symbols
     include ../blocks/_service/head/head
 
-    include ../blocks/block/blockName
-    include ../blocks/logo/logo
 
     head
         +head(head.defaults)
@@ -15,14 +13,4 @@ html(class="no-js", lang="ru")
         +Symbols()
 
         section.page__wrapper
-            +blockName(blockName.small)
-            +blockName(blockName.middle)
-            +blockName(blockName.big)
-            +Icon('pause')
-            +Icon('video')
-
-            //- img(src='/img/general/general-bg.jpg', alt="img")
-
-        .content
-            +logo(logo.defaults)
-            //- +logo(logo.another)
+            | Welcome !
