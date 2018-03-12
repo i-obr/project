@@ -5,6 +5,7 @@ import prettify from 'gulp-prettify';
 import plumber from 'gulp-plumber';
 import cached from 'gulp-cached';
 import pugInheritance from 'gulp-pug-inheritance';
+import revReplace from 'gulp-rev-replace';
 import gulpIf from 'gulp-if';
 import rename from 'gulp-rename';
 import filter from 'gulp-filter';
@@ -12,7 +13,9 @@ import posthtml from 'gulp-posthtml';
 import bem from 'posthtml-bem';
 import errorHandler from '../helpers/errorHandler';
 
-function concatBlocksData() {
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'dev';
+
+const concatBlocksData = () => {
   let dataEntry;
   let readyMocksData;
 
@@ -29,21 +32,25 @@ function concatBlocksData() {
   }
 
   return readyMocksData;
-}
+};
 
 const filterShowCode = (text, options) => {
   const lines = text.split('\n');
   let result = '<pre class="code">\n';
-  if (typeof(options['first-line']) !== 'undefined') result = result + '<code>' + options['first-line'] + '</code>\n';
-  for (let i = 0; i < (lines.length - 1); i++) { // (lines.length - 1) для срезания последней строки (пустая)
-    result = result + '<code>' + lines[i] + '</code>\n';
+  if (typeof (options['first-line']) !== 'undefined') {
+    result = `${result}<code>${options['first-line']}</code>\n`;
   }
-  result = result + '</pre>\n';
+  for (let i = 0; i < (lines.length - 1); i += 1) {
+    result = `${result}<code>${lines[i]}</code>\n`;
+  }
+  result = `${result}</pre>\n`;
   result = result.replace(/<code><\/code>/g, '<code>&nbsp;</code>');
   return result;
-}
+};
 
 function templates() {
+  const manifest = gulp.src('./build/temp/manifest/css.json', { allowEmpty: true });
+
   return gulp.src(['source/pages/**/[^_]*.pug', 'source/blocks/**/[^_]*.pug'])
     .pipe(plumber({ errorHandler }))
     .pipe(gulpIf(global.watch, cached('templates')))
@@ -72,6 +79,7 @@ function templates() {
       }),
     ]))
     .pipe(rename({ dirname: '.' }))
+    .pipe(gulpIf(!isDev, revReplace({ manifest })))
     .pipe(gulp.dest('build/'));
 }
 

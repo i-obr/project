@@ -10,7 +10,8 @@ import server from './gulp/tasks/server';
 
 const build = gulp.series(
   clean, concatData,
-  gulp.parallel(templates, styles, imagesStatic, imagesBlocks), symbols,
+  gulp.parallel(imagesStatic, imagesBlocks),
+  styles, templates, symbols,
 );
 
 const dev = gulp.series(

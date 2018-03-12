@@ -1,16 +1,13 @@
 import gulp from 'gulp';
 import postcss from 'gulp-postcss';
-import precss from 'precss';
+import sass from 'gulp-sass';
+import autoprefixer from 'autoprefixer';
 import assets from 'postcss-assets';
-import flexbugs from 'postcss-flexbugs-fixes';
-import atImport from 'postcss-partial-import';
-import cssnext from 'postcss-cssnext';
-import normalize from 'postcss-normalize';
 import inlineSVG from 'postcss-inline-svg';
-import imageInliner from 'postcss-image-inliner';
-import fontMagic from 'postcss-font-magician';
 import cssnano from 'gulp-cssnano';
+import rev from 'gulp-rev';
 import mqpacker from 'css-mqpacker';
+import { obj as combine } from 'stream-combiner2';
 import gulpIf from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
 import plumber from 'gulp-plumber';
@@ -19,39 +16,26 @@ import errorHandler from '../helpers/errorHandler';
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'dev';
 
 function styles() {
-  return gulp.src('source/static/css/entry/*.css')
+  return gulp.src('source/static/scss/entry/*.scss')
     .pipe(plumber({ errorHandler }))
     .pipe(gulpIf(isDev, sourcemaps.init()))
+    .pipe(sass())
     .pipe(postcss([
-      atImport(),
-      normalize(),
-      cssnext(),
-      precss(),
+      autoprefixer(),
       inlineSVG(),
       assets({
-        basePath: 'source/',
-        loadPaths: ['./static/img/'],
-        relative: './static/css/',
+        basePath: 'build/',
+        loadPaths: ['./img/assets/', './img/general/', './img/content/'],
         cachebuster: true,
       }),
-      imageInliner({
-        assetPaths: [
-          'source/blocks/**/img/',
-        ],
-        // Инлайнятся только картинки менее 5 Кб.
-        maxFileSize: 5120,
-      }),
-      flexbugs(),
       mqpacker({
         sort: true,
       }),
-      fontMagic({
-        formats: 'woff2 woff',
-      }),
     ]))
     .pipe(gulpIf(isDev, sourcemaps.write()))
-    .pipe(gulpIf(!isDev, cssnano()))
-    .pipe(gulp.dest('build/css'));
+    .pipe(gulpIf(!isDev, combine(cssnano(), rev())))
+    .pipe(gulp.dest('build/css'))
+    .pipe(gulpIf(!isDev, combine(rev.manifest('css.json'), gulp.dest('build/temp/manifest'))));
 }
 
 export default styles;
