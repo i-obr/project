@@ -64,4 +64,3 @@ export function imagesBlocks() {
     .pipe(rename({ dirname: './assets/' }))
     .pipe(gulp.dest('build/img'));
 }
-

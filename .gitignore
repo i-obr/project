@@ -10,3 +10,4 @@ Thumbs.db
 *.ai
 *.pdf
 *.lock
+.vscode/settings.json
