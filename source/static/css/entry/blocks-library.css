@@ -1,6 +1,6 @@
 @import "../normalize.css";
 @import "../variables.css";
-@import "../common.css";
+@import "../blocksLibrary.css";
 
 @import "../../../blocks/Logo/Logo.css";
 @import "../../../blocks/User/User.css";

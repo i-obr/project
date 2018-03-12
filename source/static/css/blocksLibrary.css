@@ -1,0 +1,155 @@
+.BlocksLibrary {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+
+    &-Menu {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        width: 256px;
+        min-height: 90vh;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        z-index: 0;
+        display: none;
+        background-color: #1a1a1a;
+    }
+
+    &-MenuItem {
+        display: block;
+        color: #fff;
+        white-space: nowrap;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    &-Panel {
+        position: relative;
+        z-index: 1;
+        will-change: transform;
+        background-color: #fff;
+        min-height: 100vh;
+        padding: 1em;
+        padding-top: 4em;
+    }
+
+    &-ToggleButton {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        line-height: 1.2;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    &-Title {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 36px;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    &-Item {
+        position: relative;
+        padding: 1.5rem 2rem 0.5rem 3rem;
+        border: 2px dashed gray;
+        margin: 2.5rem 0;
+
+        &::before {
+            content: '.' attr(data-id);
+            position: absolute;
+            top: 20.5rem;
+            left: 1.4rem;
+            width: 21rem;
+            transform: rotate(-90deg);
+            transform-origin: 0 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            text-transform: lowercase;
+            font-size: 1em;
+            line-height: 1;
+            height: 1em;
+            text-align: right;
+            white-space: nowrap;
+            color: gray;
+        }
+    }
+
+    &-ItemTitle {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 28px;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    &-CodeWrapper {
+        position: relative;
+    }
+
+    &-CodeShowTrigger {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        color: #26aded;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &-Code {
+        overflow: hidden;
+        max-height: 0;
+        transition-duration: 0.3s;
+        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+        &_show {
+            transition-duration: 0.3s;
+            transition-timing-function: ease-in;
+            max-height: 1000px;
+        }
+
+        pre {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+            background-color: #e6e6e6;
+            border-radius: 0.1875rem;
+            border: 1px solid #cccccc;
+            white-space: normal;
+            tab-size: 2;
+            box-sizing: border-box;
+        }
+
+        code {
+            display: block;
+            padding: 0;
+            white-space: pre;
+            background-color: transparent;
+            min-height: 1em;
+            line-height: 1.4;
+        }
+
+        pre,
+        code {
+            font-family: SFMono-Regular, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+        }
+    }
+}

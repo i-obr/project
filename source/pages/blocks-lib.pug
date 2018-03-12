@@ -1,0 +1,84 @@
+doctype html
+html(class="no-js", lang="ru")
+
+    include ../blocks/Logo/Logo
+    include ../blocks/User/User
+
+    head
+        title Библиотека
+        meta(name='description', content='')
+        link(rel='stylesheet', href='css/blocks-library.css')
+        style.
+            .slideout-menu-left {
+                left: 0;
+            }
+            .slideout-menu-right {
+                right: 0;
+            }
+            .slideout-open .slideout-menu {
+                display: block;
+            }
+            .slideout-open .slideout-menu {
+                display: block;
+            }
+        script.
+            document.addEventListener('DOMContentLoaded', function() {
+                const blocks = document.querySelectorAll('.BlocksLibrary-Item');
+                const menu = Array.from(blocks).map(elem => {
+                    return `<a href="#${elem.getAttribute('id')}" class="BlocksLibrary-MenuItem">
+                        ${elem.querySelector('.BlocksLibrary-ItemTitle').textContent}
+                    </a>`;
+                }).join('');
+
+                const menuContent = document.getElementById('menu');
+                menuContent.innerHTML = menu;
+
+                const codeShowTriggers = document.querySelectorAll('.BlocksLibrary-CodeShowTrigger');
+                for (var i = 0; i < codeShowTriggers.length; i++) {
+                    codeShowTriggers[i].addEventListener('click', function() {
+                        this.closest('.BlocksLibrary-CodeWrapper').querySelector('.BlocksLibrary-Code').classList.toggle('BlocksLibrary-Code_show');
+                    });
+                }
+            });
+
+    body(block="BlocksLibrary")
+        mixin Block(id, title)
+            section(elem="Item" data-id=id id=id)
+                h2(elem="ItemTitle")
+                    != title
+                block
+
+        mixin BlockCode(id)
+            div(elem="CodeWrapper")
+                span(elem="CodeShowTrigger") Показать код
+                div(elem="Code")
+                    block
+
+        nav(elem="Menu")#menu
+
+        main(elem="Panel")#panel
+            span(elem="ToggleButton") Menu
+
+            h1.BlocksLibrary-Title Библиотека
+
+            +Block('logo', 'Логотип')
+                +Logo(logo.defaults)
+                include:markdown-it(html='true') ../blocks/Logo/Logo.md
+                +BlockCode(logo)
+                    include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/Logo/Logo.pug
+
+            +Block('user', 'Блок пользователя')
+                +User(user.defaults)
+                +BlockCode(logo)
+                    include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/User/User.pug
+
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js")
+        script.
+            const slideout = new Slideout({
+                'panel': document.getElementById('panel'),
+                'menu': document.getElementById('menu'),
+                'padding': 256,
+                'tolerance': 70
+            });
+
+            document.querySelector('.BlocksLibrary-ToggleButton').addEventListener('click', () => slideout.toggle());
