@@ -1,0 +1,6 @@
+mixin Block(id, title)
+    section(elem="Item" data-id=id id=id)
+        h2(elem="ItemTitle")
+            != title
+        p(elem="ItemPath") include ../blocks/#{id[0].toUpperCase() + id.substring(1)}/#{id[0].toUpperCase() + id.substring(1)}
+        block

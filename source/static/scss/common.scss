@@ -1,144 +1,140 @@
-body {
-    background-image: resolve('img/content/course_attention.svg');
+.Page {
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f6f5f3;
 }
 
-// .Page {
-//     margin: 0;
+.Header {
+    position: relative;
+    z-index: 100;
 
-//     font-family: Arial, Helvetica, sans-serif;
+    padding: 14px 0;
 
-//     background: #f6f5f3;
-// }
+    border-bottom: 1px solid #ccc;
+    background: #fff;
 
-// .Header {
-//     position: relative;
-//     z-index: 100;
+    &-Inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
 
-//     padding: 14px 0;
+.Container {
+    width: 1000px;
+    margin: 0 auto;
+}
 
-//     border-bottom: 1px solid #ccc;
-//     background: #fff;
+.Button {
+    padding: 0 12px;
 
-//     &-Inner {
-//         display: flex;
-//         justify-content: space-between;
-//         align-items: center;
-//     }
-// }
+    font-size: 15px;
+    line-height: 38px;
 
-// .Container {
-//     width: 1000px;
-//     margin: 0 auto;
-// }
+    color: #202020;
+    border: none;
+    border-radius: 3px;
+    background: #e8e8e8;
+}
 
-// .Button {
-//     padding: 0 12px;
+.Search {
+    font-family: Arial, Helvetica, sans-serif;
 
-//     font-size: 15px;
-//     line-height: 38px;
+    &-Button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -4px;
+    }
+}
 
-//     color: #202020;
-//     border: none;
-//     border-radius: 3px;
-//     background: #e8e8e8;
-// }
+.Input {
+    width: 350px;
+    height: 38px;
+    padding: 0 8px;
 
-// .Search {
-//     font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 38px;
 
-//     &-Button {
-//         border-top-left-radius: 0;
-//         border-bottom-left-radius: 0;
-//         margin-left: -4px;
-//     }
-// }
+    border: 2px solid #e8e8e8;
+    -webkit-appearance: none;
+}
 
-// .Input {
-//     width: 350px;
-//     height: 38px;
-//     padding: 0 8px;
+.Promo {
+    display: flex;
+    justify-content: space-between;
 
-//     font-size: 15px;
-//     line-height: 38px;
+    margin-bottom: 14px;
+}
 
-//     border: 2px solid #e8e8e8;
-//     -webkit-appearance: none;
-// }
+.Main {
+    background: #f8f8f8;
 
-// .Promo {
-//     display: flex;
-//     justify-content: space-between;
+    &-Inner {
+        padding: 30px 0 10px;
+    }
+}
 
-//     margin-bottom: 14px;
-// }
+.Heading {
+    margin: 0 0 12px;
 
-// .Main {
-//     background: #f8f8f8;
+    font-weight: 500;
+}
 
-//     &-Inner {
-//         padding: 30px 0 10px;
-//     }
-// }
+.Goods {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
-// .Heading {
-//     margin: 0 0 12px;
+.More {
+    display: block;
 
-//     font-weight: 500;
-// }
+    width: 100%;
 
-// .Goods {
-//     display: flex;
-//     justify-content: space-between;
-//     flex-wrap: wrap;
-// }
+    font: inherit;
+    line-height: 60px;
+    text-align: center;
 
-// .More {
-//     display: block;
+    border: none;
+    border-radius: 3px;
+    background: #ffdb4d;
+    -webkit-appearance: none;
 
-//     width: 100%;
+    cursor: pointer;
+}
 
-//     font: inherit;
-//     line-height: 60px;
-//     text-align: center;
+.Subscribe {
+    margin-bottom: 14px;
+    padding: 14px 0;
 
-//     border: none;
-//     border-radius: 3px;
-//     background: #ffdb4d;
-//     -webkit-appearance: none;
+    line-height: 34px;
 
-//     cursor: pointer;
-// }
+    background: #e4eeff;
+}
 
-// .Subscribe {
-//     margin-bottom: 14px;
-//     padding: 14px 0;
+.History-List {
+    display: flex;
+    justify-content: space-between;
+}
 
-//     line-height: 34px;
+.Footer {
+    margin-top: 50px;
+    padding: 12px 0;
 
-//     background: #e4eeff;
-// }
+    font-size: 13px;
 
-// .History-List {
-//     display: flex;
-//     justify-content: space-between;
-// }
+    border-top: 1px solid #ccc;
 
-// .Footer {
-//     margin-top: 50px;
-//     padding: 12px 0;
+    &-Inner {
+        display: flex;
+        justify-content: space-between;
+    }
+}
 
-//     font-size: 13px;
+.Link {
+    text-decoration: none;
 
-//     border-top: 1px solid #ccc;
-
-//     &-Inner {
-//         display: flex;
-//         justify-content: space-between;
-//     }
-// }
-
-// .Link {
-//     text-decoration: none;
-
-//     color: #8792a8;
-// }
+    color: #8792a8;
+}

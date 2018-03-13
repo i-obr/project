@@ -1,6 +1,10 @@
 doctype html
 html(class="no-js", lang="ru")
 
+    include ../blocks/_service/Block
+    include ../blocks/_service/BlockCode
+
+
     include ../blocks/Logo/Logo
     include ../blocks/User/User
 
@@ -14,9 +18,6 @@ html(class="no-js", lang="ru")
             }
             .slideout-menu-right {
                 right: 0;
-            }
-            .slideout-open .slideout-menu {
-                display: block;
             }
             .slideout-open .slideout-menu {
                 display: block;
@@ -37,33 +38,20 @@ html(class="no-js", lang="ru")
                 for (var i = 0; i < codeShowTriggers.length; i++) {
                     codeShowTriggers[i].addEventListener('click', function() {
                         this.closest('.BlocksLibrary-CodeWrapper').querySelector('.BlocksLibrary-Code').classList.toggle('BlocksLibrary-Code_show');
+                        this.closest('.BlocksLibrary-CodeWrapper').querySelector('.BlocksLibrary-CodeShowTrigger').classList.toggle('BlocksLibrary-CodeShowTrigger_isActive');
                     });
                 }
             });
 
     body(block="BlocksLibrary")
-        mixin Block(id, title)
-            section(elem="Item" data-id=id id=id)
-                h2(elem="ItemTitle")
-                    != title
-                block
-
-        mixin BlockCode(id)
-            div(elem="CodeWrapper")
-                span(elem="CodeShowTrigger") Показать код
-                div(elem="Code")
-                    block
-
         nav(elem="Menu")#menu
 
         main(elem="Panel")#panel
             span(elem="ToggleButton") Menu
 
-            h1.BlocksLibrary-Title Библиотека
-
             +Block('logo', 'Логотип')
-                +Logo(logo.defaults)
                 include:markdown-it(html='true') ../blocks/Logo/Logo.md
+                +Logo(logo.defaults)
                 +BlockCode(logo)
                     include:show-code(first-line='//- Pug-файл этого блока:') ../blocks/Logo/Logo.pug
 
@@ -77,7 +65,7 @@ html(class="no-js", lang="ru")
             const slideout = new Slideout({
                 'panel': document.getElementById('panel'),
                 'menu': document.getElementById('menu'),
-                'padding': 256,
+                'padding': 200,
                 'tolerance': 70
             });
 

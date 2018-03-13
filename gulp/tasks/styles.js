@@ -2,7 +2,6 @@ import gulp from 'gulp';
 import postcss from 'gulp-postcss';
 import sass from 'gulp-sass';
 import autoprefixer from 'autoprefixer';
-import assets from 'postcss-assets';
 import inlineSVG from 'postcss-inline-svg';
 import cssnano from 'gulp-cssnano';
 import rev from 'gulp-rev';
@@ -23,11 +22,6 @@ function styles() {
     .pipe(postcss([
       autoprefixer(),
       inlineSVG(),
-      assets({
-        basePath: 'build/',
-        loadPaths: ['./img/assets/', './img/general/', './img/content/'],
-        cachebuster: true,
-      }),
       mqpacker({
         sort: true,
       }),

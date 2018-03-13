@@ -3,30 +3,37 @@
     height: 100%;
     padding: 0;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    p {
+        margin-top: 0;
+        margin-bottom: 16px;
+        line-height: 1.5;
+        color: #333333;
+    }
 
     &-Menu {
         position: fixed;
         top: 0;
         bottom: 0;
+        left: 0;
+        width: 200px;
+        overflow: auto;
+        box-sizing: border-box;
+        border-right: 1px solid #e8e8e8;
         padding-top: 1em;
         padding-bottom: 1em;
-        width: 256px;
-        min-height: 90vh;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-        z-index: 0;
-        display: none;
-        background-color: #1a1a1a;
+        background-color: #f5f5f5;
     }
 
     &-MenuItem {
         display: block;
-        color: #fff;
+        color: #1978c8;
         white-space: nowrap;
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
-        padding: 0.5rem 1rem;
+        padding: 8px;
         text-decoration: none;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
@@ -66,9 +73,13 @@
 
     &-Item {
         position: relative;
-        padding: 1.5rem 2rem 0.5rem 3rem;
-        border: 2px dashed gray;
-        margin: 2.5rem 0;
+        padding-left: 48px;
+        padding-top: 16px;
+        padding-right: 10px;
+        padding-bottom: 8px;
+        border: 1px solid #e8e8e8;
+        margin: 0;
+        margin-bottom: 40px;
 
         &::before {
             content: '.' attr(data-id);
@@ -92,9 +103,16 @@
 
     &-ItemTitle {
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 28px;
+        font-size: 36px;
+        color: #333333;
+        font-weight: normal;
         margin: 0;
-        margin-bottom: 20px;
+        margin-bottom: 8px;
+    }
+
+    &-ItemPath {
+        font-size: 13px;
+        color: #999999;
     }
 
     &-CodeWrapper {
@@ -103,12 +121,25 @@
 
     &-CodeShowTrigger {
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 18px;
+        font-size: 15px;
+        padding: 8px 0;
         color: #26aded;
+        border: none;
+        border-bottom: 2px solid transparent;
+        color: #999999;
+        text-transform: uppercase;
+        background: transparent;
+        font-weight: normal;
         cursor: pointer;
 
-        &:hover {
-            text-decoration: underline;
+        &:hover,
+        &:focus {
+            color: #f28a25;
+            outline: none;
+        }
+
+        &_isActive {
+            border-color: #f28a25;
         }
     }
 
@@ -127,12 +158,13 @@
         pre {
             display: block;
             width: 100%;
-            padding: 0.5rem 1rem;
-            margin-bottom: 1rem;
+            padding: 8px 16px;;
+            margin-top: 0;
+            margin-bottom: 16px;
             overflow-x: auto;
-            background-color: #e6e6e6;
-            border-radius: 0.1875rem;
-            border: 1px solid #cccccc;
+            background-color: #f5f5f5;
+            // border-radius: 0.1875rem;
+            // border: 1px solid #cccccc;
             white-space: normal;
             tab-size: 2;
             box-sizing: border-box;
@@ -145,6 +177,7 @@
             background-color: transparent;
             min-height: 1em;
             line-height: 1.4;
+            color: #ac4142;
         }
 
         pre,

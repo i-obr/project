@@ -62,7 +62,6 @@
         "html-reporter": "^2.6.0",
         "jstransformer-markdown-it": "^2.0.0",
         "postcss": "^6.0.19",
-        "postcss-assets": "^5.0.0",
         "postcss-inline-svg": "^3.0.0",
         "postcss-normalize": "^4.0.0",
         "posthtml-bem": "^0.2.2",
