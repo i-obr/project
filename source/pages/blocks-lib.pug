@@ -4,7 +4,6 @@ html(class="no-js", lang="ru")
     include ../blocks/_service/Block
     include ../blocks/_service/BlockCode
 
-
     include ../blocks/Logo/Logo
     include ../blocks/User/User
 
@@ -47,7 +46,7 @@ html(class="no-js", lang="ru")
         nav(elem="Menu")#menu
 
         main(elem="Panel")#panel
-            span(elem="ToggleButton") Menu
+            button(elem="ToggleButton") Menu
 
             +Block('logo', 'Логотип')
                 include:markdown-it(html='true') ../blocks/Logo/Logo.md
