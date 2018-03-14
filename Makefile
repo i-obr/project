@@ -7,6 +7,9 @@ start:
 build:
 	npm run build
 
+souce-connect:
+	npm run sauce-connect
+
 lint:
 	npm run eslint .
 

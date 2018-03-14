@@ -6,6 +6,9 @@
 make install
 ```
 
+export SAUCE_USERNAME=obrrr
+export SAUCE_ACCESS_KEY=d7fe0ceb-c733-41c9-aab1-9bf7314587c8
+
 
 ## Структура папок и файлов
 ```
