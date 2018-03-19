@@ -3,6 +3,7 @@ import postcss from 'gulp-postcss';
 import sass from 'gulp-sass';
 import autoprefixer from 'autoprefixer';
 import inlineSVG from 'postcss-inline-svg';
+import postCSSCustomProperties from 'postcss-custom-properties';
 import cssnano from 'gulp-cssnano';
 import rev from 'gulp-rev';
 import mqpacker from 'css-mqpacker';
@@ -25,6 +26,7 @@ function styles() {
       mqpacker({
         sort: true,
       }),
+      postCSSCustomProperties()
     ]))
     .pipe(gulpIf(isDev, sourcemaps.write()))
     .pipe(gulpIf(!isDev, combine(cssnano(), rev())))
