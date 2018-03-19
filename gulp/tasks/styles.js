@@ -3,7 +3,6 @@ import postcss from 'gulp-postcss';
 import sass from 'gulp-sass';
 import autoprefixer from 'autoprefixer';
 import inlineSVG from 'postcss-inline-svg';
-import postCSSCustomProperties from 'postcss-custom-properties';
 import cssnano from 'gulp-cssnano';
 import rev from 'gulp-rev';
 import mqpacker from 'css-mqpacker';
@@ -16,22 +15,29 @@ import errorHandler from '../helpers/errorHandler';
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'dev';
 
 function styles() {
-  return gulp.src('source/static/scss/entry/*.scss')
+  return gulp
+    .src('source/static/scss/entry/*.scss')
     .pipe(plumber({ errorHandler }))
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(sass())
-    .pipe(postcss([
-      autoprefixer(),
-      inlineSVG(),
-      mqpacker({
-        sort: true,
-      }),
-      postCSSCustomProperties()
-    ]))
+    .pipe(
+      postcss([
+        autoprefixer,
+        inlineSVG,
+        mqpacker({
+          sort: true,
+        }),
+      ]),
+    )
     .pipe(gulpIf(isDev, sourcemaps.write()))
     .pipe(gulpIf(!isDev, combine(cssnano(), rev())))
     .pipe(gulp.dest('build/css'))
-    .pipe(gulpIf(!isDev, combine(rev.manifest('css.json'), gulp.dest('build/temp/manifest'))));
+    .pipe(
+      gulpIf(
+        !isDev,
+        combine(rev.manifest('css.json'), gulp.dest('build/temp/manifest')),
+      ),
+    );
 }
 
 export default styles;

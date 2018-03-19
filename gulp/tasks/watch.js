@@ -27,13 +27,14 @@ const watchingImagesStatic = [
   '!source/static/img/svg/*.svg',
 ];
 
-const watchingSymbols = [
-  'source/static/img/svg/*.svg',
-];
+const watchingSymbols = ['source/static/img/svg/*.svg'];
 
 function watch() {
   global.watch = true;
-  gulp.watch(watchingTemplatesEndData, gulp.series(concatData, templates, symbols));
+  gulp.watch(
+    watchingTemplatesEndData,
+    gulp.series(concatData, templates, symbols),
+  );
   gulp.watch(watchingStyles, styles);
   gulp.watch(watchingImagesBlocks, imagesBlocks);
   gulp.watch(watchingImagesStatic, imagesStatic);

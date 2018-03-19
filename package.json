@@ -32,7 +32,9 @@
     "del": "^3.0.0",
     "eslint": "^4.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "gemini": "^5.5.0",
     "gemini-saucelabs-info": "^1.0.0",
     "gulp": "^4.0.0",
@@ -68,6 +70,7 @@
     "postcss-inline-svg": "^3.0.0",
     "postcss-normalize": "^4.0.0",
     "posthtml-bem": "^0.2.2",
+    "prettier": "^1.11.1",
     "stream-combiner2": "^1.1.1"
   }
 }

@@ -37,10 +37,10 @@ const concatBlocksData = () => {
 const filterShowCode = (text, options) => {
   const lines = text.split('\n');
   let result = '<pre class="code">\n';
-  if (typeof (options['first-line']) !== 'undefined') {
+  if (typeof options['first-line'] !== 'undefined') {
     result = `${result}<code>${options['first-line']}</code>\n`;
   }
-  for (let i = 0; i < (lines.length - 1); i += 1) {
+  for (let i = 0; i < lines.length - 1; i += 1) {
     result = `${result}<code>${lines[i]}</code>\n`;
   }
   result = `${result}</pre>\n`;
@@ -49,35 +49,44 @@ const filterShowCode = (text, options) => {
 };
 
 function templates() {
-  const manifest = gulp.src('./build/temp/manifest/css.json', { allowEmpty: true });
+  const manifest = gulp.src('./build/temp/manifest/css.json', {
+    allowEmpty: true,
+  });
 
-  return gulp.src(['source/pages/**/[^_]*.pug', 'source/blocks/**/[^_]*.pug'])
+  return gulp
+    .src(['source/pages/**/[^_]*.pug', 'source/blocks/**/[^_]*.pug'])
     .pipe(plumber({ errorHandler }))
     .pipe(gulpIf(global.watch, cached('templates')))
     .pipe(pugInheritance({ basedir: 'source', skip: 'node_modules' }))
     .pipe(filter(file => /source[\\\/]pages/.test(file.path))) // eslint-disable-line
-    .pipe(pug({
-      basedir: 'source',
-      extension: '.pug',
-      skip: ['node_modules'],
-      locals: concatBlocksData(),
-      filters: {
-        'show-code': filterShowCode,
-      },
-    }))
-    .pipe(prettify({
-      indent_size: 4,
-      wrap_attributes: 'auto',
-      preserve_newlines: false,
-      end_with_newline: true,
-    }))
-    .pipe(posthtml([
-      bem({
-        elemPrefix: '-',
-        modPrefix: '_',
-        modDlmtr: '_',
+    .pipe(
+      pug({
+        basedir: 'source',
+        extension: '.pug',
+        skip: ['node_modules'],
+        locals: concatBlocksData(),
+        filters: {
+          'show-code': filterShowCode,
+        },
       }),
-    ]))
+    )
+    .pipe(
+      prettify({
+        indent_size: 4,
+        wrap_attributes: 'auto',
+        preserve_newlines: false,
+        end_with_newline: true,
+      }),
+    )
+    .pipe(
+      posthtml([
+        bem({
+          elemPrefix: '-',
+          modPrefix: '_',
+          modDlmtr: '_',
+        }),
+      ]),
+    )
     .pipe(rename({ dirname: '.' }))
     .pipe(gulpIf(!isDev, revReplace({ manifest })))
     .pipe(gulp.dest('build/'));
