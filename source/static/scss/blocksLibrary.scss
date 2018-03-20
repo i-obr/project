@@ -109,7 +109,7 @@
     &-ItemTitle {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 36px;
-        color: #333333;
+        color: #333;
         font-weight: normal;
         margin: 0;
         margin-bottom: 8px;
@@ -163,7 +163,7 @@
         pre {
             display: block;
             width: 100%;
-            padding: 8px 16px;;
+            padding: 8px 16px;
             margin-top: 0;
             margin-bottom: 16px;
             overflow-x: auto;
@@ -187,7 +187,8 @@
 
         pre,
         code {
-            font-family: SFMono-Regular, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+            font-family: SFMono-Regular, 'Menlo', 'Monaco', 'Consolas',
+                'Liberation Mono', 'Courier New', monospace;
         }
     }
 }

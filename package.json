@@ -36,6 +36,8 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.6.0",
     "gemini": "^5.5.0",
+    "gemini-babel": "^1.0.0",
+    "gemini-optipng": "^1.2.0",
     "gemini-saucelabs-info": "^1.0.0",
     "gulp": "^4.0.0",
     "gulp-cached": "^1.1.1",
